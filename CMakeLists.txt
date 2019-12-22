@@ -536,8 +536,8 @@ install(EXPORT cvc4-targets
   DESTINATION ${LIBRARY_INSTALL_DIR}/cmake/CVC4)
 
 configure_package_config_file(
-  ${CMAKE_SOURCE_DIR}/cmake/CVC4Config.cmake.in
-  ${CMAKE_BINARY_DIR}/cmake/CVC4Config.cmake
+  ${CMAKE_CURRENT_SOURCE_DIR}/cmake/CVC4Config.cmake.in
+  ${CMAKE_CURRENT_BINARY_DIR}/cmake/CVC4Config.cmake
   INSTALL_DESTINATION ${LIBRARY_INSTALL_DIR}/cmake/CVC4
   PATH_VARS LIBRARY_INSTALL_DIR
 )
@@ -549,8 +549,8 @@ write_basic_package_version_file(
 )
 
 install(FILES
-  ${CMAKE_BINARY_DIR}/cmake/CVC4Config.cmake
-  ${CMAKE_BINARY_DIR}/CVC4ConfigVersion.cmake
+  ${CMAKE_CURRENT_BINARY_DIR}/cmake/CVC4Config.cmake
+  ${CMAKE_CURRENT_BINARY_DIR}/CVC4ConfigVersion.cmake
   DESTINATION ${LIBRARY_INSTALL_DIR}/cmake/CVC4
 )
 
