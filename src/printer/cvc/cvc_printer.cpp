@@ -143,11 +143,19 @@ void CvcPrinter::toStream(
     case kind::CONST_BITVECTOR: {
       const BitVector& bv = n.getConst<BitVector>();
       const Integer& x = bv.getValue();
-      out << "0bin";
       unsigned n = bv.getSize();
+
+      out << "0bin";
+      bool first = true;
       while(n-- > 0) {
-        out << (x.testBit(n) ? '1' : '0');
+        bool cur = x.testBit(n);
+        if (first && n > 0 && cur == false)
+            continue;
+        else
+            first = false;
+        out << (cur ? '1' : '0');
       }
+      out << "/" << bv.getSize();
       break;
     }
     case kind::CONST_BOOLEAN:
