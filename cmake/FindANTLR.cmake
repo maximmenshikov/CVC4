@@ -6,7 +6,12 @@
 
 find_program(ANTLR_BINARY NAMES antlr3)
 find_path(ANTLR_INCLUDE_DIR NAMES antlr3.h)
-find_library(ANTLR_LIBRARIES NAMES antlr3c antlr3c-static)
+if (WIN32)
+	# Prefer static library on Win32 build
+	find_library(ANTLR_LIBRARIES NAMES antlr3c-static antlr3c)
+else ()
+	find_library(ANTLR_LIBRARIES NAMES antlr3c antlr3c-static )
+endif ()
 
 # Check if antlr3FileStreamNew is available. If not we have to
 # define CVC4_ANTLR3_OLD_INPUT_STREAM (src/parser/CMakeLists.txt).
